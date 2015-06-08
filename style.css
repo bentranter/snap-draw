@@ -110,3 +110,9 @@ body { margin: 0; font-family: 'Helvetica Neue' }
 .center { text-align: center }
 .left   { text-align: left }
 .right  { text-align: right }
+
+.abs { position: absolute }
+.t0  { top: 0 }
+.l0  { left: 0 }
+.r0  { right: 0 }
+.b0  { bottom: 0}
