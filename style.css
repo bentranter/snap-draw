@@ -1,4 +1,4 @@
-body { margin: 0; font-family: 'Helvetica Neue' }
+body { margin: 0; font-family: 'Helvetica Neue'; color: #f5f5f5 }
 
 .h1 { font-size: 2rem }
 .h2 { font-size: 1.5rem }
@@ -79,33 +79,6 @@ body { margin: 0; font-family: 'Helvetica Neue' }
 .db  { display: block }
 .dib { display: inline-block }
 .di  { display: inline }
-.dt  { display: table }
-.dtc { display: table-cell }
-.fl { float: left }
-.fr { float: right }
-.oh { overflow: hidden }
-
-.cf::before,
-.cf::after {
-  content: ' ';
-  display: table;
-}
-
-.cf::after {
-  clear: both;
-}
-.c1  { box-sizing: border-box; width: 8.33333% }
-.c2  { box-sizing: border-box; width: 16.66667% }
-.c3  { box-sizing: border-box; width: 25% }
-.c4  { box-sizing: border-box; width: 33.33333% }
-.c5  { box-sizing: border-box; width: 41.66667% }
-.c6  { box-sizing: border-box; width: 50% }
-.c7  { box-sizing: border-box; width: 58.33333% }
-.c8  { box-sizing: border-box; width: 66.66667% }
-.c9  { box-sizing: border-box; width: 75% }
-.c10 { box-sizing: border-box; width: 83.33333% }
-.c11 { box-sizing: border-box; width: 91.66667% }
-.c12 { box-sizing: border-box; width: 100% }
 
 .center { text-align: center }
 .left   { text-align: left }
@@ -115,4 +88,12 @@ body { margin: 0; font-family: 'Helvetica Neue' }
 .t0  { top: 0 }
 .l0  { left: 0 }
 .r0  { right: 0 }
-.b0  { bottom: 0}
+.b0  { bottom: 0 }
+
+.bg-blk { background-color: #151515 }
+.bg-drk { background-color: #202020 }
+
+.yellow { color: #f4bf75 }
+
+.light  { font-weight: lighter }
+.normal { font-weight: normal }
