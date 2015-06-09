@@ -95,20 +95,28 @@ body { margin: 0; font-family: 'Helvetica Neue'; color: #333 }
 .bg-white { background-color: #ffffff }
 .bg-light { background-color: #fafafb }
 .bg-gray  { background-color: #ececef }
+.bg-transparent { background-color: rgba(0,0,0,0) }
 
 .light  { font-weight: lighter }
 .normal { font-weight: normal }
+.bold   { font-weight: bold }
 
 .bt { border-top:    1px solid #d2d2d4 }
 .bb { border-bottom: 1px solid #d2d2d4 }
 .br { border-right:  1px solid #d2d2d4 }
 .bl { border-left:   1px solid #d2d2d4 }
 
+.half-width { box-sizing: border-box; width: 50% }
+
+.z1 { z-index: 100 }
+.z2 { z-index: 200 }
+
 .scroll { overflow-y: scroll; -webkit-overflow-scrolling: touch }
 
-.shadow { box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) }
+.shadow { box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.08); }
 
 .btn {
+  display: block;
   box-sizing: border-box;
   font-size: 0.875rem;
   border-top: 0;
@@ -120,7 +128,13 @@ body { margin: 0; font-family: 'Helvetica Neue'; color: #333 }
   width: 100%;
 }
 
-.btn:hover {
+/**
+ * Careful - changing default 
+ * focus is always risky for
+ * accessibility
+ */
+.btn:hover, .btn:focus {
+  outline: none;
   color: #fff;
   background-color: blue;
 }

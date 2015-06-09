@@ -10,6 +10,7 @@
     <link href='css/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
+
     <section id='sidebar' class='abs l0 t0 b0 br bg-light scroll' style='width: 220px'>
       <div class='bg-gray'>
         <h1 class='h4 m0 px1 py2 bb'>Snap Draw <span id='title' class='h5 normal'>&ndash; Untitled</span></h1>
@@ -17,12 +18,18 @@
       <div class='rel'>
         <h2 class='h5 px1'>Drawing</h2>
         <button id='insert' class='btn px1'>Insert</button>
-        <div id='insertMenu' class='abs t0 l0 mt4 ml1 shadow dn'>
-          <button class='btn px1'>Test</button>
+        <div id='insertMenu' class='abs t0 l0 mt4 ml1 shadow dn z2' style='width: 204px'>
+          <button class='btn px1'><span class='dib half-width left'>Rectangle</span><span class='dib half-width bold right'>R</span></button>
+          <button class='btn px1'><span class='dib half-width left'>Line</span><span class='dib half-width bold right'>L</span></button>
+          <button class='btn px1'><span class='dib half-width left'>Circle</span><span class='dib half-width bold right'>C</span></button>
         </div>
       </div>
+      <!-- Overlay for clicking off menus -->
+      <div id='overlay' class='abs t0 r0 l0 b0 dn bg-transparent z1'></div>
     </section>
+
     <svg id='drawingArea' class='abs r0 t0 b0' style='left: 220px' viewbox='0 0 32 32'></svg>
+
     <script src='snap.svg-min.js'></script>
     <script src='bundle.js'></script>
   </body>
