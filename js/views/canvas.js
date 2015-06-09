@@ -44,6 +44,8 @@ module.exports = Backbone.View.extend({
   handleMousewheel: function(e) {
 
     var self = this;
+
+    // Reduce deltas to slow scrolling
     var moveX = Math.floor(e.wheelDeltaX / 3);
     var moveY = Math.floor(e.wheelDeltaY / 3);
 
@@ -75,7 +77,6 @@ module.exports = Backbone.View.extend({
 
     var dim = this.getDimensions();
 
-    // Set element height and width
     dim.drawingArea
       .height(function() {
         return dim.height;
@@ -93,7 +94,6 @@ module.exports = Backbone.View.extend({
   setViewBoxDimensions: function() {
 
     var dim = this.getDimensions();
-
     dim.drawingArea[0].viewBox.baseVal.width = dim.height;
     dim.drawingArea[0].viewBox.baseVal.height = dim.width;
   }
