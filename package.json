@@ -1,0 +1,29 @@
+{
+  "name": "snap-draw",
+  "version": "0.1.0",
+  "description": "Vector drawing app with Snap.svg",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "test": "echo 'No tests'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bentranter/snap-draw.git"
+  },
+  "keywords": [
+    "vector",
+    "drawing"
+  ],
+  "author": "Ben Tranter <bwtrante@lakeheadu.ca>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bentranter/snap-draw/issues"
+  },
+  "homepage": "https://github.com/bentranter/snap-draw#readme",
+  "dependencies": {
+    "backbone": "^1.2.1",
+    "jquery": "^2.1.4",
+    "underscore": "^1.8.3"
+  }
+}

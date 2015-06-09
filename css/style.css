@@ -1,4 +1,4 @@
-body { margin: 0; font-family: 'Helvetica Neue'; color: #f5f5f5 }
+body { margin: 0; font-family: 'Helvetica Neue'; color: #333 }
 
 .h1 { font-size: 2rem }
 .h2 { font-size: 1.5rem }
@@ -79,21 +79,48 @@ body { margin: 0; font-family: 'Helvetica Neue'; color: #f5f5f5 }
 .db  { display: block }
 .dib { display: inline-block }
 .di  { display: inline }
+.dn  { display: none }
 
 .center { text-align: center }
 .left   { text-align: left }
 .right  { text-align: right }
 
+.rel { position: relative }
 .abs { position: absolute }
 .t0  { top: 0 }
 .l0  { left: 0 }
 .r0  { right: 0 }
 .b0  { bottom: 0 }
 
-.bg-blk { background-color: #151515 }
-.bg-drk { background-color: #202020 }
-
-.yellow { color: #f4bf75 }
+.bg-white { background-color: #ffffff }
+.bg-light { background-color: #fafafb }
+.bg-gray  { background-color: #ececef }
 
 .light  { font-weight: lighter }
 .normal { font-weight: normal }
+
+.bt { border-top:    1px solid #d2d2d4 }
+.bb { border-bottom: 1px solid #d2d2d4 }
+.br { border-right:  1px solid #d2d2d4 }
+.bl { border-left:   1px solid #d2d2d4 }
+
+.scroll { overflow-y: scroll; -webkit-overflow-scrolling: touch }
+
+.shadow { box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) }
+
+.btn {
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #ececef;
+  text-align: left;
+  background-color: #fff;
+  width: 100%;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: blue;
+}

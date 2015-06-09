@@ -7,17 +7,23 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon'>
     <link rel='icon' href='/favicon.ico' type='image/x-icon'>
-    <link href='/style.css' rel='stylesheet' type='text/css'>
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class='abs l0 t0 b0 bg-drk' style='right: 160px'>
-      <svg id='drawingArea'></svg>
-    </div>
-    <div class='abs r0 t0 b0 bg-blk' style='width: 160px'>
-      <h1 class='h3 center normal yellow'>Snap Draw</p>
-      <button id='rect' class='center'>Rect</button>
-    </div>
-    <script src='backbone.js'></script>
-    <script src='app.js'></script>
+    <section id='sidebar' class='abs l0 t0 b0 br bg-light scroll' style='width: 220px'>
+      <div class='bg-gray'>
+        <h1 class='h4 m0 px1 py2 bb'>Snap Draw <span id='title' class='h5 normal'>&ndash; Untitled</span></h1>
+      </div>
+      <div class='rel'>
+        <h2 class='h5 px1'>Drawing</h2>
+        <button id='insert' class='btn px1'>Insert</button>
+        <div id='insertMenu' class='abs t0 l0 mt4 ml1 shadow dn'>
+          <button class='btn px1'>Test</button>
+        </div>
+      </div>
+    </section>
+    <svg id='drawingArea' class='abs r0 t0 b0' style='left: 220px' viewbox='0 0 32 32'></svg>
+    <script src='snap.svg-min.js'></script>
+    <script src='bundle.js'></script>
   </body>
 </html>

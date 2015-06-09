@@ -1,4 +1,4 @@
-backbone.js
+bundle.js
 *.swp
 .DS_Store
 node_modules/
