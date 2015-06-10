@@ -13,10 +13,10 @@
 
     <section id='sidebar' class='abs l0 t0 b0 br bg-light scroll' style='width: 220px'>
       <div class='bg-gray'>
-        <h1 class='h4 m0 px1 py2 bb'>Snap Draw <span id='title' class='h5 normal'>&ndash; Untitled</span></h1>
+        <h1 class='title m0 px1 py2 bb'>Snap Draw <span id='title' class='subtitle normal'>&ndash; Untitled</span></h1>
       </div>
       <div class='rel'>
-        <h2 class='h5 px1'>Drawing</h2>
+        <h2 class='subtitle px1'>Drawing</h2>
         <button id='insert' class='btn px1'>Insert</button>
         <div id='insertMenu' class='abs t0 l0 mt4 ml1 shadow dn z2' style='width: 204px'>
           <button class='btn px1'><span class='dib half-width left'>Rectangle</span><span class='dib half-width bold right'>R</span></button>
@@ -29,13 +29,13 @@
     </section>
 
     <section id='canvas'>
-      <div class='abs t0 r0 z1 bg-gray p1'>
-        <button id='zoomIn' class='dib btn-icon'>+</button>
+      <div class='abs t0 r0 z1 bg-gray p1 bl bb'>
+        <button id='zoomOut' class='gray dib btn-icon'>-</button>
           <div class='dib'>
-            <label class='h5 m0 db'>Zoom</label>
-            <label class='db'><span id='zoomValue'>100</span>%</label>
+            <label class='db'>Zoom</label>
+            <label class='small db center'><span id='zoomValue'>100</span>%</label>
           </div>
-        <button id='zoomOut' class='dib btn-icon'>-</button>
+          <button id='zoomIn' class='gray dib btn-icon'>+</button>
       </div>
       <svg id='drawingArea' class='abs r0 t0 b0' style='left: 220px' viewbox='0 0 500 500'></svg>
     </section>
