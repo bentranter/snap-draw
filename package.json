@@ -23,6 +23,7 @@
   "homepage": "https://github.com/bentranter/snap-draw#readme",
   "dependencies": {
     "backbone": "^1.2.1",
+    "backbone.localstorage": "^1.1.16",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   }
