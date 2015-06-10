@@ -126,9 +126,8 @@ body { margin: 0; font-family: 'Helvetica Neue'; color: #333 }
 .shadow { box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.08); }
 
 .btn {
-  display: block;
   box-sizing: border-box;
-  font-size: 0.875rem;
+  font-size: .875rem;
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -143,8 +142,22 @@ body { margin: 0; font-family: 'Helvetica Neue'; color: #333 }
  * focus is always risky for
  * accessibility
  */
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   outline: none;
   color: #fff;
   background-color: blue;
+}
+
+.btn-icon {
+  box-sizing: border-box;
+  font-size: 1.25rem;
+  border: 0;
+  background: transparent;
+}
+
+.btn-icon:hover,
+.btn-icon:focus {
+  outline: none;
+  color: blue;
 }

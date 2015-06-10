@@ -10,14 +10,24 @@ module.exports = Backbone.View.extend({
   // Snap.svg reference to drawingArea
   snap: Snap('#drawingArea'),
 
+  // Cached DOM references
+  zoomValue: document.getElementById('zoomValue'),
+
   events: {
+    'click #zoomIn': 'zoomIn',
+    'click #zoomOut': 'zoomOut'
   },
 
   initialize: function() {
 
     // Fix references for resize 
     // events and callbacks
-    _.bindAll(this, 'getDimensions', 'setViewBoxDimensions', 'setDrawingAreaDimensions');
+    _.bindAll(this, 
+      'getDimensions', 
+      'setViewBoxDimensions', 
+      'setDrawingAreaDimensions', 
+      'resizeViewBoxDimensions'
+    );
 
     // Set the width and height
     // of the drawing area
@@ -25,11 +35,17 @@ module.exports = Backbone.View.extend({
     this.setViewBoxDimensions();
 
     // Reset on resize
-    $(window).on('resize', this.setDrawingAreaDimensions);
+    $(window).on(
+      'resize', 
+      this.setDrawingAreaDimensions,
+      this.resizeViewBoxDimensions
+    );
 
     // Register mousewheel event
     // in Chrome, Opera, Safari
-    document.getElementById('drawingArea').addEventListener('mousewheel', this.handleMousewheel, false);
+    document
+      .getElementById('drawingArea')
+      .addEventListener('mousewheel', this.handleMousewheel, false);
 
     // Test drawing
     this.snap.circle(0, 0, 25);
@@ -46,11 +62,11 @@ module.exports = Backbone.View.extend({
     var self = this;
 
     // Reduce deltas to slow scrolling
-    var moveX = Math.floor(e.wheelDeltaX / 3);
-    var moveY = Math.floor(e.wheelDeltaY / 3);
+    var moveX = Math.floor(e.wheelDeltaX / 6);
+    var moveY = Math.floor(e.wheelDeltaY / 6);
 
-    self.viewBox.baseVal.x += moveX;
-    self.viewBox.baseVal.y += moveY;
+    self.viewBox.baseVal.x -= moveX;
+    self.viewBox.baseVal.y -= moveY;
   },
 
   /**
@@ -96,5 +112,38 @@ module.exports = Backbone.View.extend({
     var dim = this.getDimensions();
     dim.drawingArea[0].viewBox.baseVal.width = dim.height;
     dim.drawingArea[0].viewBox.baseVal.height = dim.width;
+  },
+
+  /**
+   * Simulates static positioning
+   * inside viewBox.
+   */
+  resizeViewBoxDimensions: function() {
+
+    var dim = this.getDimensions();
+    dim.drawingArea[0].viewBox.baseVal.x += 0;
+    dim.drawingArea[0].viewBox.baseVal.y += 0;
+  },
+
+  zoomIn: function() {
+
+    var box = this.getDimensions().drawingArea[0].viewBox.baseVal;
+    var currentZoom = parseInt(this.zoomValue.textContent);
+
+    box.width -= 100;
+    box.height -= 100;
+
+    this.zoomValue.textContent = parseInt(currentZoom) + 10;
+  },
+
+  zoomOut: function() {
+
+    var box = this.getDimensions().drawingArea[0].viewBox.baseVal;
+    var currentZoom = parseInt(this.zoomValue.textContent);
+
+    box.width += 100;
+    box.height += 100;
+
+    this.zoomValue.textContent = parseInt(currentZoom) - 10;
   }
 });
