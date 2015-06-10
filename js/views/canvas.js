@@ -130,8 +130,8 @@ module.exports = Backbone.View.extend({
     var box = this.getDimensions().drawingArea[0].viewBox.baseVal;
     var currentZoom = parseInt(this.zoomValue.textContent);
 
-    box.width -= 100;
-    box.height -= 100;
+    box.width = Math.round(parseFloat(box.width * 0.9));
+    box.height = Math.round(parseFloat(box.height * 0.9));
 
     this.zoomValue.textContent = parseInt(currentZoom) + 10;
   },
@@ -141,8 +141,8 @@ module.exports = Backbone.View.extend({
     var box = this.getDimensions().drawingArea[0].viewBox.baseVal;
     var currentZoom = parseInt(this.zoomValue.textContent);
 
-    box.width += 100;
-    box.height += 100;
+    box.width = Math.round(parseFloat(box.width / 0.9));
+    box.height = Math.round(parseFloat(box.height / 0.9));
 
     this.zoomValue.textContent = parseInt(currentZoom) - 10;
   }
