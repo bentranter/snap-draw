@@ -15,7 +15,8 @@ module.exports = Backbone.View.extend({
 
   events: {
     'click #zoomIn': 'zoomIn',
-    'click #zoomOut': 'zoomOut'
+    'click #zoomOut': 'zoomOut',
+    'keyup': 'handleShortcuts'
   },
 
   initialize: function() {
@@ -26,7 +27,8 @@ module.exports = Backbone.View.extend({
       'getDimensions', 
       'setViewBoxDimensions', 
       'setDrawingAreaDimensions', 
-      'resizeViewBoxDimensions'
+      'resizeViewBoxDimensions',
+      'handleShortcuts'
     );
 
     // Set the width and height
@@ -41,6 +43,9 @@ module.exports = Backbone.View.extend({
       this.resizeViewBoxDimensions
     );
 
+    // Try
+    $(window).on('keyup', this.handleShortcuts);
+
     // Register mousewheel event
     // in Chrome, Opera, Safari
     document
@@ -49,6 +54,64 @@ module.exports = Backbone.View.extend({
 
     // Test drawing
     this.snap.circle(0, 0, 25);
+  },
+
+  handleShortcuts: function(e) {
+    e.preventDefault();
+
+    console.log(e.keyCode);
+
+    if (e.keyCode === 82) {
+      this.drawRect();
+    }
+    if (e.keyCode === 76) {
+      this.drawLine();
+    }
+  },
+
+  drawRect: function(e) {
+    var data = {};
+    var drawAttr = {
+      stroke: '#333',
+      strokeWidth: 5
+    };
+
+    var self = this;
+    this.snap
+      .mousedown(function(evt) {
+        data.x1 = evt.clientX;
+        data.y1 = evt.clientY;
+      })
+      .mouseup(function(evt) {
+        data.x2 = evt.clientX;
+        data.y2 = evt.clientY;
+
+        self.snap.path(Snap.format('M {x1} {y1} L {x2} {y1}', data)).attr(drawAttr);
+        self.snap.path(Snap.format('M {x1} {y1} L {x1} {y2}', data)).attr(drawAttr);
+        self.snap.path(Snap.format('M {x1} {y2} L {x2} {y2}', data)).attr(drawAttr);
+        self.snap.path(Snap.format('M {x2} {y1} L {x2} {y2}', data)).attr(drawAttr);
+    });
+  },
+
+  drawLine: function(e) {
+    var data = {};
+    var drawAttr = {
+      stroke: '#333',
+      strokeWidth: 5
+    };
+
+    var self = this;
+    this.snap
+      .mousedown(function(evt) {
+        data.x1 = evt.clientX;
+        data.y1 = evt.clientY;
+      })
+      .mouseup(function(evt) {
+        data.x2 = evt.clientX;
+        data.y2 = evt.clientY;
+
+        self.snap.path(Snap.format('M {x1} {y1} L {x2} {y2}', data)).attr(drawAttr);
+    });
   },
 
   /**
