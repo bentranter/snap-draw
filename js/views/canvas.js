@@ -7,7 +7,7 @@ var $ = require('jquery');
 module.exports = Backbone.View.extend({
   el: '#canvas',
 
-  // Snap.svg reference to drawingArea
+  // Cachy cachy
   snap: Snap('#drawingArea'),
 
   // Cached DOM references
@@ -53,7 +53,7 @@ module.exports = Backbone.View.extend({
       .addEventListener('mousewheel', this.handleMousewheel, false);
 
     // Test drawing
-    this.snap.circle(0, 0, 25);
+    // this.snap.circle(0, 0, 25);
   },
 
   handleShortcuts: function(e) {
@@ -67,24 +67,33 @@ module.exports = Backbone.View.extend({
     if (e.keyCode === 76) {
       this.drawLine();
     }
+    if (e.keyCode === 32) {
+      this.testProblems();
+    }
+  },
+
+  testProblems: function() {
+    this.snap.mousedown(function(e) {
+      console.log('Viewbox: ', e.currentTarget.viewBox.baseVal.x, e.currentTarget.viewBox.baseVal.y);
+      console.log('x: ', e.layerX, 'y: ', e.layerY);
+    });
   },
 
   drawRect: function(e) {
+    var self = this;
     var data = {};
     var drawAttr = {
       stroke: '#333',
       strokeWidth: 5
     };
-
-    var self = this;
     this.snap
       .mousedown(function(evt) {
-        data.x1 = evt.clientX;
-        data.y1 = evt.clientY;
+        data.x1 = evt.layerX - 220;
+        data.y1 = evt.layerY;
       })
       .mouseup(function(evt) {
-        data.x2 = evt.clientX;
-        data.y2 = evt.clientY;
+        data.x2 = evt.layerX - 220;
+        data.y2 = evt.layerY;
 
         self.snap.path(Snap.format('M {x1} {y1} L {x2} {y1}', data)).attr(drawAttr);
         self.snap.path(Snap.format('M {x1} {y1} L {x1} {y2}', data)).attr(drawAttr);
