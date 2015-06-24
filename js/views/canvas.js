@@ -74,8 +74,9 @@ module.exports = Backbone.View.extend({
 
   testProblems: function() {
     this.snap.mousedown(function(e) {
+      // Always draw based on the viewBox's position
       console.log('Viewbox: ', e.currentTarget.viewBox.baseVal.x, e.currentTarget.viewBox.baseVal.y);
-      console.log('x: ', e.layerX, 'y: ', e.layerY);
+      console.log('Layers: ', e.layerX, e.layerY);
     });
   },
 
@@ -88,12 +89,14 @@ module.exports = Backbone.View.extend({
     };
     this.snap
       .mousedown(function(evt) {
-        data.x1 = evt.layerX - 220;
-        data.y1 = evt.layerY;
+        data.x1 = evt.currentTarget.viewBox.baseVal.x + evt.clientX;
+        data.y1 = evt.currentTarget.viewBox.baseVal.y + evt.clientY;
+        console.log(data.x1, data.y1);
       })
       .mouseup(function(evt) {
-        data.x2 = evt.layerX - 220;
-        data.y2 = evt.layerY;
+        data.x2 = evt.currentTarget.viewBox.baseVal.x + evt.clientX;
+        data.y2 = evt.currentTarget.viewBox.baseVal.y + evt.clientY;
+        console.log(data.x2, data.y2);
 
         self.snap.path(Snap.format('M {x1} {y1} L {x2} {y1}', data)).attr(drawAttr);
         self.snap.path(Snap.format('M {x1} {y1} L {x1} {y2}', data)).attr(drawAttr);
@@ -112,12 +115,14 @@ module.exports = Backbone.View.extend({
     var self = this;
     this.snap
       .mousedown(function(evt) {
-        data.x1 = evt.clientX;
-        data.y1 = evt.clientY;
+        data.x1 = evt.currentTarget.viewBox.baseVal.x + evt.clientX;
+        data.y1 = evt.currentTarget.viewBox.baseVal.y + evt.clientY;
+        console.log(data.x1, data.y1);
       })
       .mouseup(function(evt) {
-        data.x2 = evt.clientX;
-        data.y2 = evt.clientY;
+        data.x2 = evt.currentTarget.viewBox.baseVal.x + evt.clientX;
+        data.y2 = evt.currentTarget.viewBox.baseVal.y + evt.clientY;
+        console.log(data.x2, data.y2);
 
         self.snap.path(Snap.format('M {x1} {y1} L {x2} {y2}', data)).attr(drawAttr);
     });
